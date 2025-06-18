@@ -3,1150 +3,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI新飞行员 - 您的AI工具导航专家</title>
-    <meta name="description" content="发现最佳AI工具和平台。您的人工智能解决方案综合指南，助力提升生产力、创造力和创新能力。">
-    <meta name="keywords" content="AI工具,人工智能,AI导航,AI平台,机器学习,深度学习,ChatGPT,Claude,Midjourney">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <title>热点聚合 - 实时热搜榜</title>
+    <meta name="description" content="实时追踪抖音热搜榜，每小时更新最新热点话题">
+    <meta name="keywords" content="抖音,热搜,热点,实时,榜单">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05Q3J44ZYW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // 配置GA4
+        gtag('config', 'G-05Q3J44ZYW', {
+            page_title: '热点聚合 - 实时热搜榜',
+            page_location: window.location.href,
+            content_group1: '热搜聚合',
+            content_group2: '多平台热搜',
+            custom_map: {
+                'custom_parameter_1': 'platform_type'
+            },
+            // 跨域跟踪配置
+            linker: {
+                domains: ['hotsearchhub77.com', '416657e2.hotsearchhub-website.pages.dev']
+            },
+            // 域名配置
+            cookie_domain: 'hotsearchhub77.com',
+            // 发送页面浏览事件
+            send_page_view: true
+        });
+        
+        // 自定义事件跟踪函数
+        function trackEvent(eventName, parameters = {}) {
+            gtag('event', eventName, {
+                event_category: 'user_interaction',
+                event_label: parameters.label || '',
+                value: parameters.value || 0,
+                custom_parameter_1: parameters.platform || '',
+                ...parameters
+            });
+        }
+        
+        // 页面加载完成事件
+        window.addEventListener('load', function() {
+            trackEvent('page_loaded', {
+                event_category: 'page_performance',
+                event_label: 'initial_load'
+            });
+        });
+    </script>
+    
+    <!-- Cloudflare Web Analytics - 自动设置，无需手动添加代码 -->
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='.9em' font-size='90'>🔥</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-bg: #0a0a0a;
-            --secondary-bg: #111111;
-            --card-bg: #1a1a1a;
-            --border-color: #333333;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --error-color: #ef4444;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-accent: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
-            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
         body {
-            font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f7fa;
+            min-height: 100vh;
         }
-
-        .background-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            padding: 3rem 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 300px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .logo-icon {
-            font-size: 4rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-        }
-
-        /* Search */
-        .search-container {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .search-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 1.25rem 1.75rem 1.25rem 3.5rem;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            color: var(--text-muted);
-            z-index: 1;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-            background: rgba(26, 26, 26, 0.8);
-        }
-
-        .search-box::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-tab {
-            padding: 1rem 2rem;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .nav-tab:hover,
-        .nav-tab.active {
-            color: white;
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-tab:hover::before,
-        .nav-tab.active::before {
-            left: 0;
-        }
-
-        /* Grid */
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-
+        
         .platform-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .platform-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--accent-color);
-            background: rgba(26, 26, 26, 0.9);
-        }
-
-        .platform-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .platform-header {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .platform-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: white;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .platform-icon::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: rotate(45deg) translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .platform-card:hover .platform-icon::after {
-            transform: rotate(45deg) translateX(100%);
-        }
-
-        .platform-info h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .platform-url {
-            font-size: 0.95rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .platform-url:hover {
-            text-decoration: underline;
-        }
-
-        .external-link-icon {
-            width: 16px;
-            height: 16px;
-            opacity: 0.7;
-        }
-
-        .platform-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        .platform-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .tag {
-            padding: 0.4rem 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-color);
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: scale(1.05);
-        }
-
-        .tag.featured {
-            background: var(--gradient-secondary);
-            color: white;
-            border: none;
-        }
-
-        .tag.popular {
-            background: var(--gradient-tertiary);
-            color: white;
-            border: none;
-        }
-
-        .tag.trending {
-            background: var(--gradient-accent);
-            color: #8b5a00;
-            border: none;
-        }
-
-        /* Stats */
-        .stats-section {
-            text-align: center;
-            margin: 5rem 0;
-            padding: 3rem;
-            background: var(--card-bg);
-            border-radius: 24px;
-            border: 2px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-primary);
-            opacity: 0.05;
-            z-index: -1;
-        }
-
-        .stats-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--secondary-bg);
-            border-top: 2px solid var(--border-color);
-            padding: 4rem 0 2rem;
-            margin-top: 5rem;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-            z-index: -1;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .footer-info h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-info p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 1.5rem;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
+            background: white;
             border-radius: 12px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            height: fit-content;
         }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: left 0.3s ease;
-            z-index: -1;
+        
+        .douyin-card {
+            border-left: 4px solid #1a1a1a;
         }
-
-        .social-link:hover {
-            color: white;
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        
+        .kuaishou-card {
+            border-left: 4px solid #ff6600;
         }
-
-        .social-link:hover::before {
-            left: 0;
+        
+        .toutiao-card {
+            border-left: 4px solid #ff4444;
         }
-
-        .social-icon {
+        
+        .xiaohongshu-card {
+            border-left: 4px solid #ff2442;
+        }
+        
+        .platform-header {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .platform-icon {
             width: 24px;
             height: 24px;
-            fill: currentColor;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
         }
-
-        .footer-bottom {
+        
+        .douyin-icon { background: #1a1a1a; }
+        .kuaishou-icon { background: #ff6600; }
+        .toutiao-icon { background: #ff4444; }
+        .xiaohongshu-icon { background: #ff2442; }
+        
+        .trend-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f8f9fa;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .trend-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .trend-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rank-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .rank-1 { background: linear-gradient(135deg, #ff4757, #ff6b7a); }
+        .rank-2 { background: linear-gradient(135deg, #ff9f43, #ffa726); }
+        .rank-3 { background: linear-gradient(135deg, #2ed573, #7bed9f); }
+        .rank-other { background: #c5c5c5; }
+        
+        .trend-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .trend-title {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .trend-heat {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .trend-label {
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .label-hot { background: #ff4757; }
+        .label-new { background: #ffa726; }
+        .label-boil { background: #2ed573; }
+        .label-fire { background: #ff9f43; }
+        
+        .header-section {
             text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: 3rem;
+            padding: 24px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
         }
-
-        /* Loading Animation */
-        .loading {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+        
+        .main-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #6366f1;
+            margin-bottom: 8px;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .update-info {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .platforms-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                gap: 1.5rem;
-            }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .logo {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-
-            .platforms-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-
-            .nav-tabs {
-                gap: 0.5rem;
-            }
-
-            .nav-tab {
-                padding: 0.75rem 1.25rem;
-                font-size: 0.9rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .platform-card {
-                padding: 1.5rem;
-            }
-
-            .search-box {
-                padding: 1rem 1.25rem 1rem 3rem;
-                font-size: 1rem;
-            }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
-
-        /* Hidden class for filtering */
-        .hidden {
-            display: none !important;
+        
+        .loading-skeleton {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f8f9fa;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        .skeleton-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            animation: shimmer 1.5s infinite;
         }
-
-        ::-webkit-scrollbar-track {
-            background: var(--primary-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+        
+        .skeleton-text {
+            height: 12px;
+            background: #e5e7eb;
             border-radius: 4px;
+            animation: shimmer 1.5s infinite;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-color);
+        
+        .skeleton-text-long { width: 120px; }
+        .skeleton-text-short { width: 60px; margin-top: 4px; }
+        
+        @keyframes shimmer {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
+        
+        .footer-section {
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 24px 0;
+            margin-top: 32px;
         }
-
-        /* No results message */
-        .no-results {
+        
+        .platform-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-text {
             text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-            font-size: 1.1rem;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .footer-subtext {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* 修复Tailwind类名 */
+        .max-w-7xl { max-width: 80rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-6 { gap: 1.5rem; }
+        .font-semibold { font-weight: 600; }
+        .text-gray-800 { color: #1f2937; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-center { text-align: center; }
+        .text-sm { font-size: 0.875rem; }
+        .text-blue-500 { color: #3b82f6; }
+        .text-blue-600 { color: #2563eb; }
+        .hover\:text-blue-600:hover { color: #2563eb; }
+        .p-8 { padding: 2rem; }
+        .w-8 { width: 2rem; }
+        .h-8 { height: 2rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .flex-1 { flex: 1 1 0%; }
+        .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         }
     </style>
 </head>
 <body>
-    <div class="background-pattern"></div>
-    
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <div class="logo-icon">🚀</div>
-                <h1 class="logo">AI新飞行员</h1>
-            </div>
-            <p class="tagline">您的AI工具导航专家</p>
-            <p class="subtitle">发现、探索并掌握世界上最强大的AI工具</p>
-            
-            <!-- Search -->
-            <div class="search-container">
-                <div class="search-wrapper">
-                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <input type="text" class="search-box" placeholder="搜索AI工具和平台..." id="searchInput">
-                </div>
-            </div>
-        </header>
-
-        <!-- Navigation Tabs -->
-        <nav class="nav-tabs">
-            <a href="#" class="nav-tab active" data-category="all">全部平台</a>
-            <a href="#" class="nav-tab" data-category="international">国际平台</a>
-            <a href="#" class="nav-tab" data-category="domestic">国内平台</a>
-            <a href="#" class="nav-tab" data-category="featured">精选推荐</a>
-        </nav>
-
-        <!-- Platforms Grid -->
-        <div class="platforms-grid" id="platformsGrid">
-            <!-- Platforms will be populated by JavaScript -->
+    <!-- Header -->
+    <div class="header-section">
+        <h1 class="main-title">热点聚合</h1>
+        <div class="update-info">
+            <div class="status-dot"></div>
+            <span id="updateTime">最新热点追踪 - 2025年06月13日 18:10 (实时数据)</span>
         </div>
+    </div>
 
-        <!-- No results message -->
-        <div class="no-results hidden" id="noResults">
-            <h3>未找到匹配的平台</h3>
-            <p>请尝试其他关键词或查看所有平台</p>
-        </div>
-
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <h2 class="stats-title">平台统计数据</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">AI平台</div>
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- 抖音热搜 -->
+            <div class="platform-card douyin-card">
+                <div class="platform-header">
+                    <div class="platform-icon douyin-icon">抖</div>
+                    <span class="font-semibold text-gray-800">抖音热搜</span>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100万+</div>
-                    <div class="stat-label">月访问量</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">每日更新</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">免费访问</div>
+                <div id="douyinList">
+                    <div id="douyinSkeleton"></div>
                 </div>
             </div>
-        </section>
+
+            <!-- 快手热搜 -->
+            <div class="platform-card kuaishou-card">
+                <div class="platform-header">
+                    <div class="platform-icon kuaishou-icon">快</div>
+                    <span class="font-semibold text-gray-800">快手热搜</span>
+                </div>
+                <div id="kuaishouList">
+                    <div id="kuaishouSkeleton"></div>
+                </div>
+            </div>
+
+            <!-- 今日头条 -->
+            <div class="platform-card toutiao-card">
+                <div class="platform-header">
+                    <div class="platform-icon toutiao-icon">头</div>
+                    <span class="font-semibold text-gray-800">今日头条</span>
+                </div>
+                <div id="toutiaoList">
+                    <div id="toutiaoSkeleton"></div>
+                </div>
+            </div>
+
+            <!-- 小红书热搜 -->
+            <div class="platform-card xiaohongshu-card">
+                <div class="platform-header">
+                    <div class="platform-icon xiaohongshu-icon">小</div>
+                    <span class="font-semibold text-gray-800">小红书热搜</span>
+                </div>
+                <div id="xiaohongshuList">
+                    <div id="xiaohongshuSkeleton"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>AI新飞行员</h3>
-                    <p>由陈肖艳精心策划 - 您值得信赖的AI革命向导</p>
-                    <p>发现、探索并掌握世界上最强大的AI工具</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://twitter.com/chen_xiao81801" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                        Twitter
-                    </a>
-                    <a href="https://www.youtube.com/@%E9%99%88%E8%82%96%E8%89%B3" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        YouTube
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AI新飞行员. 为AI社区精心打造 ❤️</p>
-            </div>
+    <div class="footer-section">
+        <div class="platform-icons">
+            <div class="platform-icon douyin-icon">抖</div>
+            <div class="platform-icon kuaishou-icon">快</div>
+            <div class="platform-icon toutiao-icon">头</div>
+            <div class="platform-icon xiaohongshu-icon">小</div>
         </div>
-    </footer>
+        <div class="footer-text">© 2025 热点聚合 - 实时追踪全网热点</div>
+        <div class="footer-subtext">Powered by EdgeOne Pages</div>
+    </div>
 
     <script>
-        // Enhanced platform data with more comprehensive information
-        const platforms = [
-            {
-                name: "FuturePedia",
-                url: "https://futurepedia.io",
-                description: "全球最大的AI工具目录，拥有5000+工具。发现最新的AI创新技术，找到满足您需求的完美解决方案。",
-                category: "international",
-                tags: ["featured", "综合目录", "全面"],
-                icon: "FP"
-            },
-            {
-                name: "There's An AI For That",
-                url: "https://theresanaiforthat.com",
-                description: "面向任务的AI工具聚合器。为您需要解决的任何特定任务或问题找到合适的AI工具。",
-                category: "international",
-                tags: ["popular", "任务导向", "搜索"],
-                icon: "TA"
-            },
-            {
-                name: "TopAI.tools",
-                url: "https://topai.tools",
-                description: "每日精选的最佳AI工具。及时了解最新、最有效的AI解决方案。",
-                category: "international",
-                tags: ["trending", "每日更新", "精选"],
-                icon: "TA"
-            },
-            {
-                name: "FutureTools",
-                url: "https://futuretools.io",
-                description: "专注于生产力和效率的AI工具。发现能够为您的工作流程增压的工具。",
-                category: "international",
-                tags: ["生产力", "效率", "工作流"],
-                icon: "FT"
-            },
-            {
-                name: "AICYCLOPEDIA",
-                url: "https://aicyclopedia.com",
-                description: "全面的AI百科全书，包含3000+工具。您完整的AI生态系统指南。",
-                category: "international",
-                tags: ["百科全书", "全面", "教育"],
-                icon: "AI"
-            },
-            {
-                name: "AI Depot",
-                url: "https://aidepot.co",
-                description: "发现新兴AI工具和初创公司的平台。率先探索前沿的AI创新技术。",
-                category: "international",
-                tags: ["新兴", "初创公司", "创新"],
-                icon: "AD"
-            },
-            {
-                name: "Getinference AI Radar",
-                url: "https://airadar.getinference.com",
-                description: "AI工具发现平台，月访问量100万+。趋势AI工具和市场洞察。",
-                category: "international",
-                tags: ["popular", "趋势", "分析"],
-                icon: "GI"
-            },
-            {
-                name: "AI Tool Hunt",
-                url: "https://aitoolhunt.com",
-                description: "寻找最佳AI工具，提供社区评论和评分。发现用户信赖的工具。",
-                category: "international",
-                tags: ["社区", "评论", "评分"],
-                icon: "AH"
-            },
-            {
-                name: "AI Scout",
-                url: "https://aiscout.net",
-                description: "在AI工具成为主流之前发现和探索新工具。AI创新的早期访问。",
-                category: "international",
-                tags: ["抢先体验", "探索", "新品"],
-                icon: "AS"
-            },
-            {
-                name: "SERP AI",
-                url: "https://serp.ai",
-                description: "AI驱动的搜索和发现平台。使用智能搜索算法找到AI工具。",
-                category: "international",
-                tags: ["搜索", "智能", "发现"],
-                icon: "SA"
-            },
-            {
-                name: "All Things AI",
-                url: "https://allthingsai.com",
-                description: "全面的AI资源中心。关于AI工具和技术的一切您需要了解的信息。",
-                category: "international",
-                tags: ["全面", "资源", "教育"],
-                icon: "AT"
-            },
-            {
-                name: "Betalist",
-                url: "https://betalist.com",
-                description: "在公开发布前发现和测试测试版AI工具。获得有前途的AI初创公司的早期访问权。",
-                category: "international",
-                tags: ["测试版", "抢先体验", "测试"],
-                icon: "BL"
-            },
-            {
-                name: "PitchWall",
-                url: "https://pitchwall.co",
-                description: "展示AI公司的初创公司推介平台。发现获得资助的AI初创公司及其工具。",
-                category: "international",
-                tags: ["初创公司", "融资", "推介"],
-                icon: "PW"
-            },
-            {
-                name: "AI-Bot.cn",
-                url: "https://ai-bot.cn",
-                description: "中文AI导航，专注于细分和专业工具。全面的本土AI生态系统。",
-                category: "domestic",
-                tags: ["中文", "细分", "专业"],
-                icon: "AB"
-            },
-            {
-                name: "AIHub",
-                url: "https://aihub.cn",
-                description: "中国活跃的AI社区平台。与AI爱好者互动，发现趋势工具。",
-                category: "domestic",
-                tags: ["社区", "活跃", "趋势"],
-                icon: "AH"
-            },
-            {
-                name: "36KrAI",
-                url: "https://36krai.com",
-                description: "数百种AI工具，详细分类。面向企业的专业AI工具目录。",
-                category: "domestic",
-                tags: ["企业", "分类", "专业"],
-                icon: "36"
-            },
-            {
-                name: "AI研究院",
-                url: "https://aiyjs.com",
-                description: "中国首个AI工具发布平台。发现新推出的AI工具和服务。",
-                category: "domestic",
-                tags: ["featured", "研究", "发布", "新工具"],
-                icon: "AR"
-            },
-            {
-                name: "优设AI导航",
-                url: "https://hao.uisdc.com/ai/",
-                description: "面向设计师的AI工具集合。为创意专业人士和设计师提供专业工具。",
-                category: "domestic",
-                tags: ["设计", "创意", "专业人士"],
-                icon: "YS"
-            },
-            {
-                name: "AMZ123 AI",
-                url: "https://amz123.com",
-                description: "跨境卖家AI导航。专注于电子商务和国际贸易的专业工具。",
-                category: "domestic",
-                tags: ["电商", "跨境", "贸易"],
-                icon: "AM"
-            },
-            {
-                name: "17yongai",
-                url: "https://17yongai.com",
-                description: "AIGC教程和工具平台。通过全面的教程学习和使用AI工具。",
-                category: "domestic",
-                tags: ["教程", "AIGC", "学习"],
-                icon: "17"
-            },
-            {
-                name: "图钉AI导航",
-                url: "https://tudingai.com",
-                description: "精准的AI工具推荐。精心策划的高质量AI工具选择。",
-                category: "domestic",
-                tags: ["精选", "推荐", "高质量"],
-                icon: "TD"
-            },
-            {
-                name: "潮点AI",
-                url: "https://chaopoint.com",
-                description: "趋势AI工具发现平台。通过最新的AI创新和趋势保持领先。",
-                category: "domestic",
-                tags: ["trending", "创新", "发现"],
-                icon: "CP"
-            },
-            {
-                name: "2345出海导航",
-                url: "https://2345.com",
-                description: "为中国用户提供的海外AI工具导航。连接国际AI工具和服务的桥梁。",
-                category: "domestic",
-                tags: ["海外", "国际", "桥梁"],
-                icon: "23"
+        // 存储所有平台数据
+        let allTrends = {};
+        let allUpdateTimes = {}; // 新增：存储所有平台的更新时间
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('页面加载完成，开始初始化...');
+            
+            // 初始化图标（如果lucide可用）
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
             }
-        ];
+            
+            renderAllSkeletons();
+            loadAllData();
+            
+            // 每5分钟自动刷新
+            setInterval(loadAllData, 5 * 60 * 1000);
+        });
 
-        // DOM elements
-        const searchInput = document.getElementById('searchInput');
-        const platformsGrid = document.getElementById('platformsGrid');
-        const navTabs = document.querySelectorAll('.nav-tab');
-        const noResults = document.getElementById('noResults');
-
-        // Current filter
-        let currentCategory = 'all';
-        let searchQuery = '';
-
-        // Initialize
-        function init() {
-            renderPlatforms();
-            setupEventListeners();
-            animateOnLoad();
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            searchInput.addEventListener('input', handleSearch);
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', handleTabClick);
-            });
-
-            // Add keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
-                    e.preventDefault();
-                    searchInput.focus();
-                }
+        // 渲染所有骨架屏
+        function renderAllSkeletons() {
+            console.log('渲染骨架屏...');
+            ['douyin', 'kuaishou', 'toutiao', 'xiaohongshu'].forEach(platform => {
+                renderSkeleton(platform);
             });
         }
 
-        // Handle tab clicks
-        function handleTabClick(e) {
-            e.preventDefault();
-            const category = e.target.dataset.category;
-            
-            // Update active tab
-            navTabs.forEach(tab => tab.classList.remove('active'));
-            e.target.classList.add('active');
-            
-            // Update current category
-            currentCategory = category;
-            
-            // Re-render platforms
-            renderPlatforms();
-        }
-
-        // Handle search
-        function handleSearch() {
-            searchQuery = searchInput.value.toLowerCase().trim();
-            renderPlatforms();
-        }
-
-        // Filter platforms based on category and search
-        function getFilteredPlatforms() {
-            let filtered = platforms;
-
-            // Filter by category
-            if (currentCategory !== 'all') {
-                filtered = filtered.filter(platform => 
-                    platform.category === currentCategory || 
-                    (currentCategory === 'featured' && platform.tags.includes('featured'))
-                );
+        // 渲染骨架屏
+        function renderSkeleton(platform) {
+            const container = document.getElementById(`${platform}Skeleton`);
+            if (!container) {
+                console.error(`找不到骨架屏容器: ${platform}Skeleton`);
+                return;
             }
-
-            // Filter by search query
-            if (searchQuery) {
-                filtered = filtered.filter(platform => {
-                    const name = platform.name.toLowerCase();
-                    const description = platform.description.toLowerCase();
-                    const tags = platform.tags.join(' ').toLowerCase();
-                    const url = platform.url.toLowerCase();
-                    
-                    return name.includes(searchQuery) || 
-                           description.includes(searchQuery) || 
-                           tags.includes(searchQuery) ||
-                           url.includes(searchQuery);
-                });
+            
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                const skeleton = document.createElement('div');
+                skeleton.className = 'loading-skeleton';
+                skeleton.innerHTML = `
+                    <div class="skeleton-circle"></div>
+                    <div style="flex: 1;">
+                        <div class="skeleton-text skeleton-text-long"></div>
+                        <div class="skeleton-text skeleton-text-short"></div>
+                    </div>
+                `;
+                container.appendChild(skeleton);
             }
-
-            return filtered;
         }
 
-        // Render platforms
-        function renderPlatforms() {
-            const filteredPlatforms = getFilteredPlatforms();
+        // 加载所有平台数据
+        async function loadAllData() {
+            console.log('开始加载所有平台数据...');
+            const platforms = [
+                { name: 'douyin', api: '/api/trending' },
+                { name: 'kuaishou', api: '/api/kuaishou' },
+                { name: 'toutiao', api: '/api/toutiao' },
+                { name: 'xiaohongshu', api: '/api/xiaohongshu' }
+            ];
 
-            if (filteredPlatforms.length === 0) {
-                platformsGrid.style.display = 'none';
-                noResults.classList.remove('hidden');
-            } else {
-                platformsGrid.style.display = 'grid';
-                noResults.classList.add('hidden');
+            await Promise.all(platforms.map(platform => loadPlatformData(platform.name, platform.api)));
+            
+            // 所有平台数据加载完成后，更新时间显示
+            updateTimeFromAllPlatforms();
+        }
+
+        // 加载单个平台数据
+        async function loadPlatformData(platform, apiUrl) {
+            console.log(`开始加载 ${platform} 数据...`);
+            try {
+                const response = await fetch(apiUrl);
+                console.log(`${platform} 响应状态:`, response.status);
                 
-                platformsGrid.innerHTML = filteredPlatforms.map((platform, index) => `
-                    <div class="platform-card loading" style="animation-delay: ${index * 0.1}s" data-category="${platform.category}">
-                        <div class="platform-header">
-                            <div class="platform-icon">${platform.icon}</div>
-                            <div class="platform-info">
-                                <h3>${platform.name}</h3>
-                                <a href="${platform.url}" class="platform-url" target="_blank" rel="noopener noreferrer">
-                                    ${platform.url.replace('https://', '')}
-                                    <svg class="external-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                    </svg>
-                                </a>
+                const data = await response.json();
+                console.log(`${platform} 数据:`, data);
+                
+                if (data.success && data.trends) {
+                    allTrends[platform] = data.trends ? data.trends.slice(0, 10) : [];
+                    // 存储更新时间
+                    allUpdateTimes[platform] = data.stats?.last_update;
+                    renderPlatformTrends(platform);
+                    console.log(`${platform} 数据加载成功，共 ${allTrends[platform].length} 条`);
+                    
+                    // GA4事件跟踪：数据加载成功
+                    if (typeof gtag !== 'undefined') {
+                        trackEvent('data_loaded', {
+                            event_category: 'data_interaction',
+                            event_label: platform,
+                            platform: platform,
+                            trend_count: allTrends[platform].length
+                        });
+                    }
+                } else {
+                    throw new Error(data.error || '数据格式错误');
+                }
+                
+            } catch (error) {
+                console.error(`${platform}数据加载失败:`, error);
+                renderErrorState(platform);
+                
+                // GA4事件跟踪：数据加载失败
+                if (typeof gtag !== 'undefined') {
+                    trackEvent('data_load_error', {
+                        event_category: 'error',
+                        event_label: platform,
+                        platform: platform,
+                        error_message: error.message
+                    });
+                }
+            }
+        }
+
+        // 渲染平台热搜
+        function renderPlatformTrends(platform) {
+            console.log(`渲染 ${platform} 热搜数据...`);
+            const container = document.getElementById(`${platform}List`);
+            const skeleton = document.getElementById(`${platform}Skeleton`);
+            
+            if (!container) {
+                console.error(`找不到容器: ${platform}List`);
+                return;
+            }
+            
+            // 清空骨架屏
+            if (skeleton) {
+                skeleton.innerHTML = '';
+            }
+            
+            const trends = allTrends[platform];
+            if (!trends.length) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-gray-400">
+                        <div style="width: 2rem; height: 2rem; margin: 0 auto 0.5rem;">📭</div>
+                        <p class="text-sm">暂无数据</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const trendsHTML = trends.map(trend => {
+                const rankClass = getRankClass(trend.rank);
+                const labelClass = getLabelClass(trend.label);
+                const heatFormatted = formatHeatValue(trend.hot_value);
+                
+                return `
+                    <div class="trend-item" onclick="openSearch('${platform}', '${encodeURIComponent(trend.keyword)}', '${trend.search_url || ''}')">
+                        <div class="${rankClass}">${trend.rank}</div>
+                        <div class="trend-content">
+                            <div class="trend-title">
+                                <span class="flex-1 truncate">${trend.keyword}</span>
+                                ${trend.label ? `<span class="${labelClass}">${trend.label}</span>` : ''}
                             </div>
-                        </div>
-                        <p class="platform-description">${platform.description}</p>
-                        <div class="platform-tags">
-                            ${platform.tags.map(tag => `<span class="tag ${tag}">${tag}</span>`).join('')}
+                            <div class="trend-heat">${heatFormatted}</div>
                         </div>
                     </div>
-                `).join('');
+                `;
+            }).join('');
+            
+            container.innerHTML = trendsHTML;
+            console.log(`${platform} 渲染完成`);
+        }
+
+        // 渲染错误状态
+        function renderErrorState(platform) {
+            const container = document.getElementById(`${platform}List`);
+            const skeleton = document.getElementById(`${platform}Skeleton`);
+            
+            if (skeleton) {
+                skeleton.innerHTML = '';
+            }
+            
+            if (container) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-gray-400">
+                        <div style="width: 2rem; height: 2rem; margin: 0 auto 0.5rem;">📡</div>
+                        <p class="text-sm mb-2">加载失败</p>
+                        <button onclick="loadPlatformData('${platform}', '/api/${platform === 'douyin' ? 'trending' : platform}')" class="text-blue-500 hover:text-blue-600 text-sm">
+                            重新加载
+                        </button>
+                    </div>
+                `;
             }
         }
 
-        // Animate elements on load
-        function animateOnLoad() {
-            const cards = document.querySelectorAll('.platform-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                }, index * 100);
-            });
+        // 获取排名样式
+        function getRankClass(rank) {
+            if (rank === 1) return 'rank-circle rank-1';
+            if (rank === 2) return 'rank-circle rank-2';
+            if (rank === 3) return 'rank-circle rank-3';
+            return 'rank-circle rank-other';
         }
 
-        // Smooth scroll for internal links
-        function smoothScroll(target) {
-            document.querySelector(target).scrollIntoView({
-                behavior: 'smooth'
-            });
+        // 获取标签样式
+        function getLabelClass(label) {
+            const classes = {
+                '热': 'trend-label label-hot',
+                '新': 'trend-label label-new',
+                '沸': 'trend-label label-boil',
+                '爆': 'trend-label label-fire'
+            };
+            return classes[label] || 'trend-label label-hot';
         }
 
-        // Add some interactive features
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add click tracking for analytics (placeholder)
-            document.querySelectorAll('.platform-url').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Track click analytics here
-                    console.log('Platform clicked:', e.target.closest('.platform-card').querySelector('h3').textContent);
+        // 格式化热度值
+        function formatHeatValue(value) {
+            if (!value) return '0';
+            if (value >= 100000000) {
+                return `${(value / 100000000).toFixed(1)}亿`;
+            } else if (value >= 10000) {
+                return `${(value / 10000).toFixed(1)}万`;
+            } else if (value >= 1000) {
+                return `${(value / 1000).toFixed(1)}k`;
+            }
+            return value.toLocaleString();
+        }
+
+        // 从所有平台中找到最新的更新时间并更新显示
+        function updateTimeFromAllPlatforms() {
+            const times = Object.values(allUpdateTimes).filter(time => time);
+            if (times.length > 0) {
+                // 找到最新的时间
+                const latestTime = times.reduce((latest, current) => {
+                    return new Date(current.replace(/\//g, '-')) > new Date(latest.replace(/\//g, '-')) ? current : latest;
                 });
-            });
+                updateTime(latestTime);
+            } else {
+                updateTime(null);
+            }
+        }
 
-            // Add search suggestions (placeholder for future enhancement)
-            const searchSuggestions = ['ChatGPT', 'Midjourney', 'GitHub Copilot', 'Claude', 'Stable Diffusion'];
-            
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey || e.metaKey) {
-                    switch(e.key) {
-                        case 'k':
-                            e.preventDefault();
-                            searchInput.focus();
-                            break;
-                        case '1':
-                            e.preventDefault();
-                            document.querySelector('[data-category="all"]').click();
-                            break;
-                        case '2':
-                            e.preventDefault();
-                            document.querySelector('[data-category="international"]').click();
-                            break;
-                        case '3':
-                            e.preventDefault();
-                            document.querySelector('[data-category="domestic"]').click();
-                            break;
-                        case '4':
-                            e.preventDefault();
-                            document.querySelector('[data-category="featured"]').click();
-                            break;
-                    }
+        // 更新时间
+        function updateTime(lastUpdate) {
+            const timeElement = document.getElementById('updateTime');
+            if (timeElement) {
+                if (lastUpdate) {
+                    timeElement.textContent = `最新热点追踪 - ${lastUpdate} (实时数据)`;
+                } else {
+                    const now = new Date();
+                    const formatted = now.toLocaleDateString('zh-CN') + ' ' + now.toLocaleTimeString('zh-CN', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    timeElement.textContent = `最新热点追踪 - ${formatted} (实时数据)`;
                 }
-            });
-        });
+            }
+        }
 
-        // Initialize the app
-        init();
-
-        // Add performance monitoring
-        window.addEventListener('load', () => {
-            console.log('AI新飞行员导航加载完成');
-            console.log(`共加载 ${platforms.length} 个AI平台`);
-        });
+        // 打开搜索
+        function openSearch(platform, keyword, url) {
+            // GA4事件跟踪：热搜点击
+            if (typeof gtag !== 'undefined') {
+                trackEvent('hottrend_click', {
+                    event_category: 'user_engagement',
+                    event_label: keyword,
+                    platform: platform,
+                    search_url: url || 'fallback_url'
+                });
+            }
+            
+            if (url && url.startsWith('http')) {
+                window.open(url, '_blank');
+            } else {
+                const searchUrls = {
+                    douyin: `https://www.douyin.com/search/${encodeURIComponent(keyword)}`,
+                    kuaishou: `https://www.kuaishou.com/search?q=${encodeURIComponent(keyword)}`,
+                    toutiao: `https://www.toutiao.com/search/?keyword=${encodeURIComponent(keyword)}`,
+                    xiaohongshu: `https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(keyword)}`
+                };
+                window.open(searchUrls[platform], '_blank');
+            }
+        }
     </script>
 </body>
 </html> 
